@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+
+<% include head.ejs %>
+
+<body id="body">
+  <% include nav_bar.ejs %>
+
+  <section id="new_member_form" class="works clearfix">
+    <div class="container">
+
+
+      <form action="new_member_data" method="post">
+
+        <div class="row">
+          Name:
+          <input type="text" name="name" />
+        </div>
+        <div class="row">
+          Joining Date:
+          <input type="text" name="join_date" />
+        </div>
+        <div class="row">
+          Age:
+          <input type="text" name="age" />
+        </div>
+        <div class="row">
+          Phone Number:
+          <input type="text" name="phone_no" />
+        </div>
+        <div class="row">
+          Email ID:
+          <input type="text" name="email_id" />
+        </div>
+        <div class="row">
+          Position:
+          <input type="text" name="position" />
+        </div>
+        <div class="row">
+          Department Name:
+          <input type="text" name="dname" />
+        </div>
+        <div class="row">
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

@@ -3,145 +3,70 @@
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-    <head>
-    	<!-- meta charec set -->
-        <meta charset="utf-8">
-		<!-- Always force latest IE rendering engine or request Chrome Frame -->
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<!-- Page Title -->
-        <title>Ekk Pahel DBMS</title>		
-		<!-- Meta Description -->
-        <meta name="description" content="Blue One Page Creative HTML5 Template">
-        <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
-        <meta name="author" content="Muhammad Morshed">
-		<!-- Mobile Specific Meta -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<!-- Google Font -->
-		
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-		<!-- CSS
-		================================================== -->
-		<!-- Fontawesome Icon font -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-		<!-- Twitter Bootstrap css -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-		<!-- jquery.fancybox  -->
-        <link rel="stylesheet" href="css/jquery.fancybox.css">
-		<!-- animate -->
-        <link rel="stylesheet" href="css/animate.css">
-		<!-- Main Stylesheet -->
-        <link rel="stylesheet" href="css/main.css">
-		<!-- media-queries -->
-        <link rel="stylesheet" href="css/media-queries.css">
+<% include head.ejs %>
 
-		<!-- Modernizer Script for old Browsers -->
-        <script src="js/modernizr-2.6.2.min.js"></script>
-
-    </head>
-	
     <body id="body">
-	
+
 		<!-- preloader -->
 		<div id="preloader">
 			<img src="img/loading.gif" alt="Preloader">
 		</div>
 		<!-- end preloader -->
 
-        <!-- 
-        Fixed Navigation
-        ==================================== -->
-        <header id="navigation" class="navbar-fixed-top navbar">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- responsive nav button -->
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-bars fa-2x"></i>
-                    </button>
-					<!-- /responsive nav button -->
-					
-					<!-- logo -->
-                    <a class="navbar-brand" href="#body">
-						<h1 id="logo">
-							<img src="img/logo1.png" alt="Brandi" width=50>
-						</h1>
-					</a>
-					<!-- /logo -->
-                </div>
+        <% include nav_bar.ejs %>
 
-				<!-- main nav -->
-                <nav class="collapse navbar-collapse navbar-right" role="navigation">
-                    <ul id="nav" class="nav navbar-nav">
-                        <li class="current"><a href="#body">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#works">Tables</a></li>
-                        <li><a href="#team">Statistics</a></li>
-                        <li><a href="#contact">About</a></li>
-                    </ul>
-                </nav>
-				<!-- /main nav -->
-				
-            </div>
-        </header>
-        <!--
-        End Fixed Navigation
-        ==================================== -->
-		
-		
-		
         <!--
         Home Slider
         ==================================== -->
-		
+
 		<section id="slider">
 			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-			
+
 				<!-- Indicators bullet -->
-				
-				<!-- End Indicators bullet -->				
-				
+
+				<!-- End Indicators bullet -->
+
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
-					
+
 					<!-- single slide -->
 					<div class="item active" style="background-image: url(img/banner1.jpeg);">
 						<div class="carousel-caption">
 							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Ekk<span> Pahel</span>!</h2>
 							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">Badlao Ke Liye, Badalna Jaruri</span> </h3>
 							<p data-wow-duration="1000ms" class="wow slideInRight animated"><b>Database Management System</b></p>
-							
-							
+
+
 						</div>
 					</div>
 					<!-- end single slide -->
-					
+
 					<!-- single slide -->
-					
+
 					<!-- end single slide -->
-					
+
 				</div>
 				<!-- End Wrapper for slides -->
-				
+
 			</div>
 		</section>
-		
+
         <!--
         End Home SliderEnd
         ==================================== -->
-		
+
         <!--
         Features
         ==================================== -->
-		
+
 		<section id="features" class="features">
 			<div class="container">
 				<div class="row">
-				
+
 					<div class="sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
 						<h2>Features</h2>
-						
+
 					</div>
 
 					<!-- service item -->
@@ -150,7 +75,7 @@
 							<div class="service-icon">
 								<i class="fa fa-table fa-2x"></i>
 							</div>
-							
+
 							<div class="service-desc">
 								<h3>Databases</h3>
 								<p>View tables present in the database</p>
@@ -158,14 +83,14 @@
 						</div>
 					</div>
 					<!-- end service item -->
-					
+
 					<!-- service item -->
 					<div class="col-md-4 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="500ms">
 						<div class="service-item">
 							<div class="service-icon">
 								<i class="fa fa-line-chart fa-2x"></i>
 							</div>
-							
+
 							<div class="service-desc">
 								<h3>Statistics</h3>
 								<p>View graphs showing the trend over time</p>
@@ -173,37 +98,37 @@
 						</div>
 					</div>
 					<!-- end service item -->
-					
+
 					<!-- service item -->
-					
+
 					<!-- end service item -->
-						
+
 				</div>
 			</div>
 		</section>
-		
+
         <!--
         End Features
         ==================================== -->
-		
-		
+
+
         <!--
         Our Works
         ==================================== -->
-		
+
 		<section id="works" class="works clearfix">
 			<div class="container">
 				<div class="row">
-				
+
 					<div class="sec-title text-center">
 						<h2>Tables</h2>
-						
+
 					</div>
-					
+
 					<div class="sec-sub-title text-center">
 						<p>The following tables give info about Members, Departments, Donations, Events, Event Members</p>
 					</div>
-					
+
 					<div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
 						<ul class="text-center">
 							<li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
@@ -214,21 +139,23 @@
 							<li><a href="javascript:;" data-filter=".Event-Members" class="filter">EVENT MEMBERS</a></li>
 						</ul>
 					</div>
-					
+
 				</div>
 			</div>
-			
+
 			<div class="project-wrapper">
-			
+
 				<figure class="mix work-item Members">
 					<img src="img/works/tbl1.jpg" alt="">
 					<figcaption class="overlay">
 						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl1.jpg"><i class="fa fa-eye fa-lg"></i></a>
+            <!--Entered by Divyaksh-->
+            <a class="fancybox" rel="works" href="/new_member">+</a>
 						<h4>Member Info</h4>
 						<p>Members</p>
 					</figcaption>
 				</figure>
-				
+
 				<figure class="mix work-item Departments">
 					<img src="img/works/tbl2.jpg" alt="">
 					<figcaption class="overlay">
@@ -237,7 +164,7 @@
 						<p>Departments</p>
 					</figcaption>
 				</figure>
-				
+
 				<figure class="mix work-item Donations">
 					<img src="img/works/tbl3.jpg" alt="">
 					<figcaption class="overlay">
@@ -246,7 +173,7 @@
 						<p>Donations</p>
 					</figcaption>
 				</figure>
-				
+
 				<figure class="mix work-item Events">
 					<img src="img/works/tbl5.jpg" alt="">
 					<figcaption class="overlay">
@@ -255,7 +182,7 @@
 						<p>Events</p>
 					</figcaption>
 				</figure>
-			
+
 				<figure class="mix work-item Event-Members">
 					<img src="img/works/tbl4.jpg" alt="">
 					<figcaption class="overlay">
@@ -264,36 +191,36 @@
 						<p>Event-Members</p>
 					</figcaption>
 				</figure>
-				
-				
-				
-			</div> 
-		
+
+
+
+			</div>
+
 
 		</section>
-		
+
         <!--
         End Our Works
         ==================================== -->
-		
+
         <!--
         Meet Our Team
-        ==================================== -->		
-		
+        ==================================== -->
+
 		<!--<section id="team" class="team">
 			<div class="container">
 				<div class="row">
-		
+
 					<div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
 						<h2>Meet Our Team</h2>
-						
+
 					</div>
-					
+
 					<div class="sec-sub-title text-center wow fadeInRight animated" data-wow-duration="500ms">
 						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
 					</div>
 
-					
+
 					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
 						<div class="member-thumb">
 							<img src="img/team/member-1.png" alt="Team Member" class="img-responsive">
@@ -310,7 +237,7 @@
 						<h4>John Filmr Doe</h4>
 						<span>Managing Director</span>
 					</figure>
-					
+
 					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
 						<div class="member-thumb">
 							<img src="img/team/member-2.png" alt="Team Member" class="img-responsive">
@@ -327,7 +254,7 @@
 						<h4>Martin Matrone</h4>
 						<span>Lead Developer</span>
 					</figure>
-					
+
 					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
 						<div class="member-thumb">
 							<img src="img/team/member-3.png" alt="Team Member" class="img-responsive">
@@ -344,7 +271,7 @@
 						<h4>Steve Flaulkin</h4>
 						<span>Sr. UI Designer</span>
 					</figure>
-					
+
 					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
 						<div class="member-thumb">
 							<img src="img/team/member-1.png" alt="Team Member" class="img-responsive">
@@ -361,29 +288,29 @@
 						<h4>John Filmr Doe</h4>
 						<span>Managing Director</span>
 					</figure>
-					
-					
+
+
 				</div>
 			</div>
 		</section>
         <!--
         End Meet Our Team
         ==================================== -->
-		
+
 		<!--
         Some fun facts
-        ==================================== -->		
-		
+        ==================================== -->
+
 		<section id="team" class="facts">
 			<div class="parallax-overlay">
 				<div class="container">
 					<div class="row number-counters">
-						
+
 						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
 							<h2>Quick Stats</h2>
-							
+
 						</div>
-						
+
 						<!-- first count item -->
 						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
 							<div class="counters-item">
@@ -418,21 +345,21 @@
 							</div>
 						</div>
 						<!-- end first count item -->
-						
-							
-						
+
+
+
 					</div>
 					<div class="col-md-12 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
 						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
 							<h2>Graphs</h2>
-						</div>	 
+						</div>
 							<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
 						<div class="member-thumb">
 							<img src="img/team/graph1.png" alt="Team Member" class="img-responsive">
 							<figcaption class="overlay">
 								<h5>Graph1 </h5>
 								<!--<p>sit aspernatur aut odit aut fugit,</p>-->
-								
+
 							</figcaption>
 						</div>
 						<h4>Members vs Time</h4>
@@ -445,7 +372,7 @@
 							<figcaption class="overlay">
 								<h5>Graph2 </h5>
 								<!--<p>sit aspernatur aut odit aut fugit,</p>-->
-								
+
 							</figcaption>
 						</div>
 						<h4>Donations vs Time</h4>
@@ -454,33 +381,33 @@
 				</div>
 			</div>
 		</section>
-		
+
         <!--
         End Some fun facts
         ==================================== -->
-		
-		
+
+
 		<!--
         Contact Us
-        ==================================== -->		
-		
+        ==================================== -->
+
 		<section id="contact" class="contact">
 			<div class="container">
 				<div class="row mb50">
-				
+
 					<div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
 						<h2>About</h2>
-						
+
 					</div>
-					
+
 					<div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
 						<p>A nonprofit organisation's goals and objectives flow from its stated mission. The mission statement, created during the strategic planning process, describes the organization's overall purpose and is usually concise.
 One of the biggest operational challenges faced by nonprofit organizations today is information management. No matter what the organization does, it can’t operate without collecting, storing, sharing, and archiving information.In order to deal with more donors (at the top) and more beneficiaries (at the bottom), NGOs increasingly need systems to manage the creation, accessing and deployment information
- In our project we aim at helping out one such organisation, “Ekk Pahel” by creating a Database management web application to collect and manage its records. 
+ In our project we aim at helping out one such organisation, “Ekk Pahel” by creating a Database management web application to collect and manage its records.
 Our project caters to real world, operational organisation.This necessitates the need to involve the NGO in the decision-making process to ensure their satisfaction.
 Our goal is to provide a prototype for an end to end web application to manage its donations and finance, record its past and future events and achievements, keep track of its members, their roles and contributions, calendar of events and schedules.  This could help in a smoother and seamless flow in the working process of the NGO, and could help take out the paper and sheet management. </p>
 					</div>
-					
+
 					<!-- contact address -->
 					<div class="col-lg-6 col-md-6 col-sm-9 col-xs-12 wow fadeInLeft animated" data-wow-duration="500ms">
 						<div class="contact-address" >
@@ -491,7 +418,7 @@ Our goal is to provide a prototype for an end to end web application to manage i
 						</div>
 					</div>
 					<!-- end contact address -->
-					
+
 					<!-- contact form -->
 					<!--<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
 						<div class="contact-form">
@@ -515,7 +442,7 @@ Our goal is to provide a prototype for an end to end web application to manage i
 						</div>
 					</div>-->
 					<!-- end contact form -->
-					
+
 					<!-- footer social links -->
 					<!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 wow fadeInRight animated" data-wow-duration="500ms" data-wow-delay="600ms">
 						<ul class="footer-social">
@@ -525,32 +452,32 @@ Our goal is to provide a prototype for an end to end web application to manage i
 							<li><a href="https://www.facebook.com/Themefisher"><i class="fa fa-facebook fa-2x"></i></a></li>
 						</ul>
 					</div>
-					
+
 				</div>
 			</div>
-			
+
 			<!-- Google map
 			<div id="map_canvas" class="wow bounceInDown animated" data-wow-duration="500ms"></div>
 			End Google map -->
-			
+
 		</section>
-		
+
         <!--
         End Contact Us
         ==================================== -->
-		
-		
+
+
 		<footer id="footer" class="footer">
 			<div class="container">
 				<div class="row">
-				
+
 					<!--<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms">
 						<div class="footer-single">
 							<img src="img/footer-logo1.png" alt="">
 							<p>eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 						</div>
 					</div>
-				
+
 					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
 						<div class="footer-single">
 							<h6>copyright </h6>
@@ -561,7 +488,7 @@ Our goal is to provide a prototype for an end to end web application to manage i
 							<p>eusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 						</div>
 					</div>
-				
+
 					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
 						<div class="footer-single">
 							<h6>Explore</h6>
@@ -573,7 +500,7 @@ Our goal is to provide a prototype for an end to end web application to manage i
 							</ul>
 						</div>
 					</div>
-				
+
 					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
 						<div class="footer-single">
 							<h6>Support</h6>
@@ -585,7 +512,7 @@ Our goal is to provide a prototype for an end to end web application to manage i
 							</ul>
 						</div>
 					</div>
-					
+
 				</div>
 				<div class="row">
 					<div class="col-md-12">
@@ -596,7 +523,7 @@ Our goal is to provide a prototype for an end to end web application to manage i
 				</div>
 			</div>-->
 		</footer>
-		
+
 		<a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
 
 		<!-- Essential jQuery Plugins
@@ -636,16 +563,16 @@ Our goal is to provide a prototype for an end to end web application to manage i
 			  }
 			);
 			wow.init();
-		</script> 
+		</script>
 		<!-- Custom Functions -->
         <script src="js/custom.js"></script>
-		
+
 		<script type="text/javascript">
 			$(function(){
 				/* ========================================================================= */
 				/*	Contact Form
 				/* ========================================================================= */
-				
+
 				$('#contact-form').validate({
 					rules: {
 						name: {
