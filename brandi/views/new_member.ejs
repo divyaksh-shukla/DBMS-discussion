@@ -8,46 +8,92 @@
 
 <body id="body">
   <% include nav_bar.ejs %>
+    <!-- Contact Form -->
+    <div class="item active" style="background-image: url(img/banner1.jpeg);">
+          <div class="container">
+              
+                <div class="col-sm-6 col-sm-offset-3 c-form-box wow fadeInUp">
+                  
+                      <div class="c-form-top">
+                        <div class="c-form-top-left">
+                          <h1><b>Add New Member</b></h1>
+                <p>________________________________________</p>
+                
+                        </div>
+                      </div>
+                      <div class="c-form-bottom">
+                        <form role="form"  method="post">
+                          <div class="form-group">
+                            <label for="c-form-name">
+                              <span class="label-text">NAME:</span> 
+                              <span class="contact-error"></span>
+                            </label>
+                            <input type="text" name="name" placeholder="Member's name..." class="c-form-name form-control" id="c-form-name">
+                          </div>
+                          <div class="form-group">
+                            <label for="c-form-joiningDate">
+                              <span class="label-text">JOINING DATE:</span> 
+                              <span class="contact-error"></span>
+                            </label>
+                              <input type="date" name="joiningDate" placeholder="Member's date of joining..." class="c-form-email form-control" id="c-form-joiningDate">
+                            </div>
+                            <div class="form-group">
+                              <label for="c-form-age">
+                              <span class="label-text">AGE:</span> 
+                              <span class="contact-error"></span>
+                              </label>
+                              <input type="integer" name="age" placeholder="Member's age..." class="c-form-subject form-control" id="c-form-age">
+                            </div>
+                            <div class="form-group">
+                              <label for="c-form-PhoneNo">
+                              <span class="label-text">PHONE NUMBER:</span> 
+                              <span class="contact-error"></span>
+                              </label>
+                              <input type="integer" name="PhoneNo" placeholder="Member's Phone number..." class="c-form-subject form-control" id="c-form-PhoneNo">
+                            </div>
+                            <div class="form-group">
+                              <label for="c-form-EmailId">
+                              <span class="label-text">EMAIL ID:</span> 
+                              <span class="contact-error"></span>
+                              </label>
+                              <input type="text" name="EmailId" placeholder="Members Email address..." class="c-form-subject form-control" id="c-form-EmailID">
+                            </div>
+                            <div class="form-group">
+                              <label for="c-form-position">
+                              <span class="label-text">POSITION:</span> 
+                              <span class="contact-error"></span>
+                              </label>
+                              <input type="text" name="position" placeholder="Member's position..." class="c-form-subject form-control" id="c-form-position">
+                            </div>
+                            <div class="form-group">
+                              <label for="c-form-deptName">
+                                <span class="label-text">DEPARTMENT NAME:</span> 
+                                <span class="contact-error"></span>
+                              </label>
+                              <input type="text" name="deptName" placeholder="member's department Name..." class="c-form-subject form-control" id="c-form-deptName">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-md">SUBMIT</button>
+                        </form>
+                      </div>
+                      
+                  
+              </div>
+              
+          </div>
+        </div>
+        
 
-  <section id="new_member_form" class="works clearfix">
-    <div class="container">
+        <!-- Javascript -->
+        <script src="public/js/jquery-1.11.1.min.js"></script>
+        <script src="public/js/bootstrap.min.js"></script>
+        <script src="public/js/jquery.backstretch.min.js"></script>
+        <script src="public/js/wow.min.js"></script>
+        <script src="public/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
 
-
-      <form action="new_member_data" method="post">
-
-        <div class="row">
-          Name:
-          <input type="text" name="member_name"/>
-        </div>
-        <div class="row">
-          Joining Date:
-          <input type="text" name="join_date" />
-        </div>
-        <div class="row">
-          Age:
-          <input type="text" name="age" />
-        </div>
-        <div class="row">
-          Phone Number:
-          <input type="text" name="phone_no" />
-        </div>
-        <div class="row">
-          Email ID:
-          <input type="text" name="email_id" />
-        </div>
-        <div class="row">
-          Position:
-          <input type="text" name="position" />
-        </div>
-        <div class="row">
-          Department Name:
-          <input type="text" name="dname" />
-        </div>
-        <div class="row">
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
-    </div>
-  </section>
-</body>
+    </body>
 </html>
