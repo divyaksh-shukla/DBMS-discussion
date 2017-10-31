@@ -35,4 +35,8 @@ delimiter ;
 - Use node query to get the supssn for a new event
 
 ### Issues
-- getting data from query and populating a drop down list (Could be done using angularjs _But I don't want to use it_)
+- getting data from query and populating a drop down list (Could be done using angularjs _But I don't want to use it_) **Solved by looping through JSON data in ejs. _Search by typing: Loop through JSON data in ejs_**
+- remove foreign_key of receipt no in Events. and add foreign key of eid in donations (Update in Schema also)
+- If while removing member, all members of a dept are removed then remove the department **trigger**
+- Show small snippets of the tables using ajax
+- **View** Members on particular Events
