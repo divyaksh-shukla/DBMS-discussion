@@ -49,10 +49,10 @@ app.get('/new_member', (req, res) => {
 app.post('/new_member_data', (req, res) => {
 
   var new_member_data = "'" + req.body.member_name + "'"
-  + ',' + "'" + req.body.join_date + "'"
+  + ',' + "'" + req.body.joiningDate + "'"
   + ',' + "'" + req.body.age + "'"
-  + ',' + "'" + req.body.phone_no + "'"
-  + ',' + "'" + req.body.email_id + "'"
+  + ',' + "'" + req.body.PhoneNo + "'"
+  + ',' + "'" + req.body.EmailId + "'"
   + ',' + "'" + req.body.position + "'"
   + ',' + "'" + req.body.dname + "'" ;
   console.log(req.body.join_date);

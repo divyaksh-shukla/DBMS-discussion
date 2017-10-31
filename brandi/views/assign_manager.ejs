@@ -11,14 +11,26 @@
 
   <section id="assign_manager" class="works clearfix" ng-controller="populateDepartments">
     <div class="container">
-      <select>
+      <table class="table table-bordered">
+        <thead>
+          <th>Department</th>
+          <th>Manager name</th>
+          <th>Manager SSN</th>
+        </thead>
+        <tbody>
         <%# <option ng-repeat="x in departments">{{x.dname}}</option>%>
         <% for (x in departments) { %>
-          <option>
-            <%=departments[x].dname%>
-          </option>
+          <tr>
+            <td>
+              <%=departments[x].dname%>
+            </td>
+            <input type="text" name="<%= departments[x].dname %>" value=""/>
+            <td>
+            </td>
+          </tr>
         <% } %>
-      </select>
+      </tbody>
+      </table>
     </div>
   </section>
 

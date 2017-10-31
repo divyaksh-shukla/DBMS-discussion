@@ -1,16 +1,16 @@
 
 jQuery(document).ready(function() {
-	
+
     /*
         Background slideshow
     */
     $('.c-form-container').backstretch("assets/img/backgrounds/bg.jpg");
-    
+
     /*
         Wow
     */
     new WOW().init();
-    
+
     /*
 	    Contact form
 	*/
@@ -23,8 +23,8 @@ jQuery(document).ready(function() {
 	        url: 'assets/contact.php',
 	        data: postdata,
 	        dataType: 'json',
-	        success: function(json) {	            
-	            
+	        success: function(json) {
+
 	        	$('.c-form-box form label[for="c-form-name"] .contact-error').fadeOut('fast', function(){
 	        		if(json.nameMessage != '') {
 		                $(this).html('(' + json.nameMessage + ')').fadeIn('fast');
@@ -53,10 +53,12 @@ jQuery(document).ready(function() {
 	    				$('.c-form-container').backstretch("resize");
 	                });
 	            }
-	            
+
 	        }
 	    });
+
+			console.log(postdata);
 	});
-	
-	
+
+
 });
