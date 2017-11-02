@@ -39,6 +39,8 @@ app.use(bodyParser.urlencoded({encoded: true}));
 app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
+
+  
   res.render('index', {});
 });
 
@@ -64,20 +66,46 @@ app.post('/new_member_data', (req, res) => {
       console.log('inserted successfully');
       console.log(result[0]);
 
-      res.render('index', {});
+      res.redirect('/');
     }
   });
 });
-  app.get('/assign-manager', (req, res) => {
-    con.query('SELECT dname FROM Department;', (err, result, field) => {
-      if (err) throw err;
-      else {
-        res.render('assign_manager', {departments: result});
-        console.log(JSON.stringify(result));
-      }
-    });
+app.get('/assign-manager', (req, res) => {
+
+  con.query('SELECT * FROM Department, Members WHERE mgrssn=ssn;', (err, result, field) => {
+    if (err) throw err;
+    else {
+      // console.log(JSON.stringify(result));
+      var managed_departments = result;
+      con.query('SELECT * FROM Department;', (err, result, field) => {
+        if (err) throw err;
+          else {
+          var departments = result;
+          res.render('assign_manager', {departments: departments, managers: managed_departments});
+        }
+      });
+    }
   });
-  // app.post('/get_departments', (req, res) => {
+});
+
+app.get('/select_members', (req, res)=>{
+  con.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;', (err, result, field)=> {
+    res.send(JSON.stringify(result));
+  });
+});
+
+app.get('/select_departments', (req, res) => {
+  con.query('SELECT d.dname, m.mname FROM Department d, Members m WHERE d.mgrssn=m.ssn ORDER BY d.dno ASC LIMIT 5;', (err, result, field) => {
+    res.send(JSON.stringify(result));
+  });
+});
+
+app.get('/select_Donation', (req, res) => {
+  con.query('SELECT donor_name, type FROM Donations ORDER BY receipt_no DESC LIMIT 5;', (err, result, field) => {
+    res.send(JSON.stringify(result));
+  });
+});
+// app.post('/get_departments', (req, res) => {
   //   con.query('SELECT dname FROM Department;', (err, result, field) => {
   //     if (err) throw err;
   //     else {
