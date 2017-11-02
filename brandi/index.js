@@ -40,7 +40,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
 
-  
+
   res.render('index', {});
 });
 
@@ -72,7 +72,7 @@ app.post('/new_member_data', (req, res) => {
 });
 app.get('/assign-manager', (req, res) => {
 
-  con.query('SELECT * FROM Department, Members WHERE mgrssn=ssn;', (err, result, field) => {
+  con.query('SELECT d.dno, m.mname, m.ssn FROM Department d, Members m WHERE mgrssn=ssn;', (err, result, field) => {
     if (err) throw err;
     else {
       // console.log(JSON.stringify(result));
@@ -82,6 +82,10 @@ app.get('/assign-manager', (req, res) => {
           else {
           var departments = result;
           res.render('assign_manager', {departments: departments, managers: managed_departments});
+          console.log("Department:");
+          console.log(JSON.stringify(departments));
+          console.log("Managers:");
+          console.log(JSON.stringify(managed_departments));
         }
       });
     }
