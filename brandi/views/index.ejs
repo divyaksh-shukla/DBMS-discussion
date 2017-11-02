@@ -146,10 +146,33 @@
 			<div class="project-wrapper">
 
 				<figure class="mix work-item Members">
-					<img src="img/works/tbl1.jpg" alt="">
+					<%# <img src="img/works/tbl1.jpg" alt="">%>
+          <%# ___________________________________________________ %>
+          <%# Table by divyaksh begins here%>
+          <table class="table table-bordered">
+            <thead>
+              <th>Member Name</th>
+              <th>Department</th>
+            </thead>
+            <tbody>
+          <% for (m in members) { %>
+            <tr>
+              <td>
+                <%= members[m].mname %>
+              </td>
+              <td>
+                <%= members[m].dname %>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+        </table>
+
+        <%# Table by divyaksh ends here%>
+        <%# ___________________________________________________ %>
 					<figcaption class="overlay">
-						<%# <a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl1.jpg"><i class="fa fa-eye fa-lg"></i></a>%>
-            
+						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl1.jpg"><i class="fa fa-eye fa-lg"></i></a>
+
             <!--Entered by Divyaksh-->
             <a class="fancybox" rel="works" href="/new_member">+</a>
 						<h4>Member Info</h4>
@@ -158,7 +181,32 @@
 				</figure>
 
 				<figure class="mix work-item Departments">
-					<img src="img/works/tbl2.jpg" alt="">
+					<%# <img src="img/works/tbl2.jpg" alt="">%>
+
+          <%# ___________________________________________________ %>
+          <%# Table by divyaksh begins here%>
+          <table class="table table-bordered">
+            <thead>
+              <th>Department</th>
+              <th>Manager Name</th>
+            </thead>
+            <tbody>
+          <% for (d in departments) { %>
+            <tr>
+              <td>
+                <%= departments[d].dname %>
+              </td>
+              <td>
+                <%= departments[d].mname %>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+        </table>
+
+        <%# Table by divyaksh ends here%>
+        <%# ___________________________________________________ %>
+
 					<figcaption class="overlay">
 						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl2.jpg"><i class="fa fa-eye fa-lg"></i></a>
             <a class="fancybox" rel="works" href="/assign-manager">Assign Manager</a>

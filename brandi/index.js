@@ -1,8 +1,18 @@
 var express = require('express');
 var mysql = require('mysql');
+var promise_mysql = require('promise-mysql');
 var bodyParser = require('body-parser');
+var Promise = require('bluebird');
 
 var app = express();
+
+// Handling mysql using Promise
+var connection = promise_mysql.createPool({
+  host: "localhost",
+  user: "divyaksh",
+  password: "password",
+  database: "ekkPahel"
+});
 
 // Handling the mysql Database
 var con = mysql.createConnection ( {
@@ -40,8 +50,33 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
 
+  var flag = 1;
+  var members, departments, donations;
+  connection.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;').then((rows) => {
 
-  res.render('index', {});
+    // Members preview data
+    console.log(JSON.stringify(rows));
+    members = rows;
+    flag += 1;
+    return connection.query('SELECT d.dname, m.mname FROM Department d, Members m WHERE d.mgrssn=m.ssn ORDER BY d.dno ASC LIMIT 5;')
+  }).then((rows) => {
+
+    // Departments Preview data
+    console.log(JSON.stringify(rows));
+    departments = rows;
+    flag += 1;
+    return connection.query('SELECT donor_name, type FROM Donations ORDER BY receipt_no DESC LIMIT 5;')
+  }).then((rows) => {
+
+    // Donations Preview data
+    console.log(JSON.stringify(rows));
+    donations = rows;
+    flag += 1;
+
+    res.render('index', {members: members, departments: departments, donations: donations});
+
+
+  });
 });
 
 app.get('/new_member', (req, res) => {

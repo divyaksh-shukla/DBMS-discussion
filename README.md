@@ -42,3 +42,5 @@ delimiter ;
 - **View** Members on particular Events
 - **AngularJS** is used to populate the table in the index page.
   - Look for a way to sequentially (synchronized) execute SQl queries from mysql
+  - **Solved** using promises in mysql using the promise-mysql library
+  - new changes uploaded
