@@ -6,23 +6,24 @@
 
 <% include head.ejs %>
 
-<body id="body" ng-app="assignManager">
+<body id="body" ng-app="assignManager" style="background-image: url(img/banner1.jpeg);">
   <% include nav_bar.ejs %>
 
   <section id="assign_manager" class="works clearfix" ng-controller="populateDepartments">
     <div class="container">
+<h3 data-wow-duration="1000ms" ><span class="color"><b>Assign Manager</b></span> </h3>
       <table class="table table-bordered">
         <thead>
-          <th>Department</th>
-          <th>Manager name</th>
-          <th>Manager SSN</th>
+          <th style="color:white">Department</th>
+          <th style="color:white">Manager name</th>
+          <th style="color:white">Manager SSN</th>
         </thead>
         <tbody>
         <%# <option ng-repeat="x in departments">{{x.dname}}</option>%>
         <% for (di in departments) {
             var dept_manager_flag = false;%>
           <tr>
-            <td>
+            <td style="color:white">
               <%=departments[di].dname%>
             </td>
               <% for (mi in managers){
@@ -47,6 +48,7 @@
         <% } %>
       </tbody>
       </table>
+	<button type="submit" class="btn btn-primary btn-md" style="margin-left:540px";>SUBMIT</button>
     </div>
   </section>
 
