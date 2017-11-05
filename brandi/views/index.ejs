@@ -285,7 +285,34 @@
 				</figure>
 
 				<figure class="mix work-item Event-Members well">
-					<img src="img/works/tbl4.jpg" alt="">
+					<%# <img src="img/works/tbl4.jpg" alt="">%>
+
+
+          <%# ___________________________________________________ %>
+          <%# Table by divyaksh begins here%>
+          <table class="table table-bordered">
+            <thead>
+              <th>Event name</th>
+              <th>Member name</th>
+            </thead>
+            <tbody>
+          <% for (em in event_members) { %>
+            <tr>
+              <td>
+                <%= event_members[em].ename %>
+              </td>
+              <td>
+                <%= event_members[em].mname %>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+        </table>
+
+        <%# Table by divyaksh ends here%>
+        <%# ___________________________________________________ %>
+
+
 					<figcaption class="overlay">
 						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl4.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>EventMembers Info</h4>

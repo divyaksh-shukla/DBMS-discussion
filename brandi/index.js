@@ -54,7 +54,7 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
 
   var flag = 1;
-  var members, departments, donations, events;
+  var members, departments, donations, events, event_members;
   // Query to get latest added members
   connection.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;').then((rows) => {
   // connection.query('SELECT mname, ssn FROM Members ORDER BY ssn DESC LIMIT 5;').then((rows) => {
@@ -92,8 +92,18 @@ app.get('/', function(req, res) {
     events = rows;
     flag += 1;
 
-    res.render('index', {departments: departments, members: members, donations: donations, events: events});
+    // Query to get the event members
+    return connection.query('SELECT ename, mname FROM Events e, Members m, Event_Members em where e.eid=em.eid and m.ssn=em.memssn LIMIT 5;')
 
+    // res.render('index', {departments: departments, members: members, donations: donations, events: events});
+
+  }).then((rows) => {
+
+    // Event Members Preview data
+    console.log(JSON.stringify(rows));
+    event_members = rows;
+
+    res.render('index', {departments: departments, members: members, donations: donations, events: events, event_members: event_members});
   });
 });
 
