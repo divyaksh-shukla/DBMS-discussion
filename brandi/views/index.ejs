@@ -145,7 +145,7 @@
 
 			<div class="project-wrapper">
 
-				<figure class="mix work-item Members">
+				<figure class="mix work-item Members well">
 					<%# <img src="img/works/tbl1.jpg" alt="">%>
           <%# ___________________________________________________ %>
           <%# Table by divyaksh begins here%>
@@ -181,7 +181,7 @@
 					</figcaption>
 				</figure>
 
-				<figure class="mix work-item Departments">
+				<figure class="mix work-item Departments well">
 					<%# <img src="img/works/tbl2.jpg" alt="">%>
 
           <%# ___________________________________________________ %>
@@ -216,8 +216,33 @@
 					</figcaption>
 				</figure>
 
-				<figure class="mix work-item Donations">
-					<img src="img/works/tbl3.jpg" alt="">
+				<figure class="mix work-item Donations well">
+					<%# <img src="img/works/tbl3.jpg" alt="">%>
+
+          <%# ___________________________________________________ %>
+          <%# Table by divyaksh begins here%>
+          <table class="table table-bordered">
+            <thead>
+              <th>Donor name</th>
+              <th>Type</th>
+            </thead>
+            <tbody>
+          <% for (d in donations) { %>
+            <tr>
+              <td>
+                <%= donations[d].donor_name %>
+              </td>
+              <td>
+                <%= donations[d].type %>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+        </table>
+
+        <%# Table by divyaksh ends here%>
+        <%# ___________________________________________________ %>
+
 					<figcaption class="overlay">
 						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl3.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Donation Info</h4>
@@ -225,8 +250,33 @@
 					</figcaption>
 				</figure>
 
-				<figure class="mix work-item Events">
-					<img src="img/works/tbl5.jpg" alt="">
+				<figure class="mix work-item Events well">
+					<%# <img src="img/works/tbl5.jpg" alt="">%>
+
+          <%# ___________________________________________________ %>
+          <%# Table by divyaksh begins here%>
+          <table class="table table-bordered">
+            <thead>
+              <th>Event name</th>
+              <th>Location</th>
+            </thead>
+            <tbody>
+          <% for (e in events) { %>
+            <tr>
+              <td>
+                <%= events[e].ename %>
+              </td>
+              <td>
+                <%= events[e].location %>
+              </td>
+            </tr>
+          <% } %>
+        </tbody>
+        </table>
+
+        <%# Table by divyaksh ends here%>
+        <%# ___________________________________________________ %>
+
 					<figcaption class="overlay">
 						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl5.jpg"><i class="fa fa-eye fa-lg"></i></a>
 						<h4>Events Info</h4>
@@ -234,7 +284,7 @@
 					</figcaption>
 				</figure>
 
-				<figure class="mix work-item Event-Members">
+				<figure class="mix work-item Event-Members well">
 					<img src="img/works/tbl4.jpg" alt="">
 					<figcaption class="overlay">
 						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl4.jpg"><i class="fa fa-eye fa-lg"></i></a>

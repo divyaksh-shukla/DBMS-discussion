@@ -54,9 +54,10 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
 
   var flag = 1;
-  var members, departments, donations;
+  var members, departments, donations, events;
   // Query to get latest added members
   connection.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;').then((rows) => {
+  // connection.query('SELECT mname, ssn FROM Members ORDER BY ssn DESC LIMIT 5;').then((rows) => {
 
     // Members preview data
     console.log(JSON.stringify(rows));
@@ -82,8 +83,16 @@ app.get('/', function(req, res) {
     flag += 1;
 
     // Query to get latest added Events
-    // return connection.query('SELECT ')
-    res.render('index', {departments: departments, members: members});
+    return connection.query('SELECT ename, location FROM Events ORDER BY eid DESC LIMIT 5;')
+
+  }).then((rows) => {
+
+    // Events Preview data
+    console.log(JSON.stringify(rows));
+    events = rows;
+    flag += 1;
+
+    res.render('index', {departments: departments, members: members, donations: donations, events: events});
 
   });
 });
