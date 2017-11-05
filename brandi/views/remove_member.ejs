@@ -6,22 +6,29 @@
 
 <% include head.ejs %>
 
-<body id="body">
+<body id="body" style="background-image: url(img/banner1.jpeg);">
   <% include nav_bar.ejs %>
     <!-- Contact Form -->
-    <div class="item active" style="background-image: url(img/banner1.jpeg);">
+    <div class="item active" >
       <div class="container">
         <div class="col-sm-6 col-sm-offset-3 c-form-box wow fadeInUp">
           <div class="c-form-top">
             <div class="c-form-top-left">
-              <h3 data-wow-duration="1000ms"> <span class="color"> <b>Remove Member</b> </span> </h3>
-              <p>________________________________________</p>
+              
             </div>
           </div>
+          <div >
+            <h3 data-wow-duration="1000ms"> <span class="color"> <b>Remove Member</b> </span> </h3>
+              <p>________________________________________</p>
+              <p>                                       .</p>
+            </div>
           <div class="c-form-bottom">
+
             <form role="form"  method="post" action="/new_member_data">
               <div class="form-group">
+
                 <label for="c-form-name">
+
                   <span class="label-text" style="color:white">NAME:</span>
                     <span class="contact-error"></span>
                 </label>
@@ -36,7 +43,7 @@
                 <input type="text" name="EmailId" placeholder="Members Email address..." class="c-form-subject form-control" id="c-form-EmailID">
               </div>
                             
-              <button type="submit" class="btn btn-primary btn-md" style="color:white" action="">SUBMIT</button>
+              <button type="submit" class="btn btn-primary btn-md" style="color:white" action="">Remove</button>
           </form>
         </div>
       </div>
@@ -54,3 +61,4 @@
         <![endif]-->
 </body>
 </html>
+
