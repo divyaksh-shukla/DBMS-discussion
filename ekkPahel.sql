@@ -38,7 +38,7 @@ CREATE TABLE `Department` (
 
 LOCK TABLES `Department` WRITE;
 /*!40000 ALTER TABLE `Department` DISABLE KEYS */;
-INSERT INTO `Department` VALUES (1,'Finance',1),(2,'Management',NULL),(3,'Donations',NULL);
+INSERT INTO `Department` VALUES (2,'Management',NULL),(3,'Donations',NULL);
 /*!40000 ALTER TABLE `Department` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,11 +137,16 @@ CREATE TABLE `Members` (
   `ssn` int(11) NOT NULL AUTO_INCREMENT,
   `mname` varchar(20) DEFAULT NULL,
   `joining_date` date DEFAULT NULL,
-  `age` int(11) DEFAULT NULL,
   `phone` varchar(10) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `position` varchar(20) DEFAULT NULL,
   `dno` int(11) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `father_name` varchar(50) DEFAULT NULL,
+  `corresponding_address` varchar(50) DEFAULT NULL,
+  `permanent_address` varchar(50) DEFAULT NULL,
+  `gender` varchar(6) DEFAULT NULL,
+  `college` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`ssn`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -152,7 +157,6 @@ CREATE TABLE `Members` (
 
 LOCK TABLES `Members` WRITE;
 /*!40000 ALTER TABLE `Members` DISABLE KEYS */;
-INSERT INTO `Members` VALUES (1,'Divyaksh','2017-09-09',20,'9611519000','divyaksh.shukla','Executive',NULL),(4,'Atishey','2017-07-01',20,'9876765643','atishey@gmail.com','Executive',2);
 /*!40000 ALTER TABLE `Members` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -165,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-11-02 21:02:57
+-- Dump completed on 2017-11-05 11:16:28
