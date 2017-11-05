@@ -92,6 +92,10 @@ app.get('/new_member', (req, res) => {
   res.render('new_member',{data: null, errors: null});
 });
 
+app.get('/remove_member', (req, res) => {
+  res.render('remove_member');
+});
+
 app.post('/new_member_data',[
   check('member_name').isEmpty().isAlpha().trim(),
   check('joiningDate').isEmpty(),
