@@ -12,6 +12,7 @@
   <section id="assign_manager" class="works clearfix" ng-controller="populateDepartments">
     <div class="container">
 <h3 data-wow-duration="1000ms" ><span class="color"><b>Assign Manager</b></span> </h3>
+  <form action="/assign-manager" method="post">
       <table class="table table-bordered">
         <thead>
           <th style="color:white">Department</th>
@@ -33,7 +34,7 @@
                     <input type="text" name="<%= departments[di].dname %>" value="<%= managers[mi].mname %>">
                     </td>
                     <td>
-                    <label><%= managers[mi].ssn %></label>
+                    <label style="color: white"><%= managers[mi].ssn %></label>
                     </td>
                   <%}
                 }
@@ -48,7 +49,10 @@
         <% } %>
       </tbody>
       </table>
-	<button type="submit" class="btn btn-primary btn-md" style="margin-left:540px";>SUBMIT</button>
+      <%# <input type="submit" value="submit"  />%>
+      <button type="submit" class="btn btn-primary btn-md" style="margin-left:540px";>SUBMIT</button>
+    </form>
+
     </div>
   </section>
 

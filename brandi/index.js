@@ -4,6 +4,9 @@ var promise_mysql = require('promise-mysql');
 var bodyParser = require('body-parser');
 var Promise = require('bluebird');
 
+const {check, validationResult} = require('express-validator/check');
+const {matchedData, sanitize} = require('express-validator/filter');
+
 var app = express();
 
 // Handling mysql using Promise
@@ -52,12 +55,15 @@ app.get('/', function(req, res) {
 
   var flag = 1;
   var members, departments, donations;
+  // Query to get latest added members
   connection.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;').then((rows) => {
 
     // Members preview data
     console.log(JSON.stringify(rows));
     members = rows;
     flag += 1;
+
+    // Query to get latest added departments
     return connection.query('SELECT d.dname, m.mname FROM Department d, Members m WHERE d.mgrssn=m.ssn ORDER BY d.dno ASC LIMIT 5;')
   }).then((rows) => {
 
@@ -65,6 +71,8 @@ app.get('/', function(req, res) {
     console.log(JSON.stringify(rows));
     departments = rows;
     flag += 1;
+
+    // Query to get latest added donations
     return connection.query('SELECT donor_name, type FROM Donations ORDER BY receipt_no DESC LIMIT 5;')
   }).then((rows) => {
 
@@ -73,17 +81,26 @@ app.get('/', function(req, res) {
     donations = rows;
     flag += 1;
 
-    res.render('index', {members: members, departments: departments, donations: donations});
-
+    // Query to get latest added Events
+    // return connection.query('SELECT ')
+    res.render('index', {departments: departments, members: members});
 
   });
 });
 
 app.get('/new_member', (req, res) => {
-  res.render('new_member',{});
+  res.render('new_member',{data: null, errors: null});
 });
 
-app.post('/new_member_data', (req, res) => {
+app.post('/new_member_data',[
+  check('member_name').isEmpty().isAlpha().trim(),
+  check('joiningDate').isEmpty(),
+  check('age').isEmpty().isInt().trim(),
+  check('PhoneNo').isEmpty().isMobilePhone('any').trim(),
+  check('EmailId').isEmpty().isEmail().trim(),
+  check('position').isEmpty().isAlpha().trim(),
+  check('dname').isEmpty().isAlpha().trim()
+] , (req, res) => {
 
   var new_member_data = "'" + req.body.member_name + "'"
   + ',' + "'" + req.body.joiningDate + "'"
@@ -92,15 +109,15 @@ app.post('/new_member_data', (req, res) => {
   + ',' + "'" + req.body.EmailId + "'"
   + ',' + "'" + req.body.position + "'"
   + ',' + "'" + req.body.dname + "'" ;
-  console.log(req.body.join_date);
+  console.log(req.body);
 
   con.query('call insertNewMember (' + new_member_data + ');', function(err, result, fields) {
-    if (err) throw err;
+    if (err) {
+      // Testing to send and handle errors in inserting the data
+      console.log('SQL Error');
+      // res.render('new_member', {data: req.body, errors: });
+    }
     else {
-      console.log(new_member_data);
-      console.log('inserted successfully');
-      console.log(result[0]);
-
       res.redirect('/');
     }
   });
@@ -127,32 +144,7 @@ app.get('/assign-manager', (req, res) => {
   });
 });
 
-app.get('/select_members', (req, res)=>{
-  con.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;', (err, result, field)=> {
-    res.send(JSON.stringify(result));
-  });
-});
+app.post('')
 
-app.get('/select_departments', (req, res) => {
-  con.query('SELECT d.dname, m.mname FROM Department d, Members m WHERE d.mgrssn=m.ssn ORDER BY d.dno ASC LIMIT 5;', (err, result, field) => {
-    res.send(JSON.stringify(result));
-  });
-});
-
-app.get('/select_Donation', (req, res) => {
-  con.query('SELECT donor_name, type FROM Donations ORDER BY receipt_no DESC LIMIT 5;', (err, result, field) => {
-    res.send(JSON.stringify(result));
-  });
-});
-// app.post('/get_departments', (req, res) => {
-  //   con.query('SELECT dname FROM Department;', (err, result, field) => {
-  //     if (err) throw err;
-  //     else {
-  //       var result_string = JSON.stringify(result);
-  //       res.send(result_string);
-  //       console.log(result_string);
-  //     }
-  //   });
-  // });
 app.listen(8080);
 console.log("Server started on url: localhost:8080");
