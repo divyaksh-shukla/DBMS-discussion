@@ -1,759 +1,248 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
-
-<% include head.ejs %>
-
-    <body id="body">
-
-		<!-- preloader -->
-		<div id="preloader">
-			<img src="img/loading.gif" alt="Preloader">
-		</div>
-		<!-- end preloader -->
-
-        <% include nav_bar.ejs %>
-
-        <!--
-        Home Slider
-        ==================================== -->
-
-		<section id="slider">
-			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-				<!-- Indicators bullet -->
-
-				<!-- End Indicators bullet -->
-
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner" role="listbox">
-
-					<!-- single slide -->
-					<div class="item active" style="background-image: url(img/banner1.jpeg);">
-						<div class="carousel-caption">
-							<h2 data-wow-duration="700ms" data-wow-delay="500ms" class="wow bounceInDown animated">Ekk<span> Pahel</span>!</h2>
-							<h3 data-wow-duration="1000ms" class="wow slideInLeft animated"><span class="color">Badlao Ke Liye, Badalna Jaruri</span> </h3>
-							<p data-wow-duration="1000ms" class="wow slideInRight animated"><b>Database Management System</b></p>
-
-
-						</div>
-					</div>
-					<!-- end single slide -->
-
-					<!-- single slide -->
-
-					<!-- end single slide -->
-
-				</div>
-				<!-- End Wrapper for slides -->
-
-			</div>
-		</section>
-
-        <!--
-        End Home SliderEnd
-        ==================================== -->
-
-        <!--
-        Features
-        ==================================== -->
-
-		<section id="features" class="features">
-			<div class="container">
-				<div class="row">
-
-					<div class="sec-title text-center mb50 wow bounceInDown animated" data-wow-duration="500ms">
-						<h2>Features</h2>
-
-					</div>
-
-					<!-- service item -->
-					<div class="col-md-4 wow fadeInLeft" data-wow-duration="500ms">
-						<div class="service-item">
-							<div class="service-icon">
-								<i class="fa fa-table fa-2x"></i>
-							</div>
-
-							<div class="service-desc">
-								<h3>Databases</h3>
-								<p>View tables present in the database</p>
-							</div>
-						</div>
-					</div>
-					<!-- end service item -->
-
-					<!-- service item -->
-					<div class="col-md-4 wow fadeInUp" data-wow-duration="500ms" data-wow-delay="500ms">
-						<div class="service-item">
-							<div class="service-icon">
-								<i class="fa fa-line-chart fa-2x"></i>
-							</div>
-
-							<div class="service-desc">
-								<h3>Statistics</h3>
-								<p>View graphs showing the trend over time</p>
-							</div>
-						</div>
-					</div>
-					<!-- end service item -->
-
-					<!-- service item -->
-
-					<!-- end service item -->
-
-				</div>
-			</div>
-		</section>
-
-        <!--
-        End Features
-        ==================================== -->
-
-
-        <!--
-        Our Works
-        ==================================== -->
-
-		<section id="works" class="works clearfix">
-			<div class="container">
-				<div class="row">
-
-					<div class="sec-title text-center">
-						<h2>Tables</h2>
-
-					</div>
-
-					<div class="sec-sub-title text-center">
-						<p>The following tables give info about Members, Departments, Donations, Events, Event Members</p>
-					</div>
-
-					<div class="work-filter wow fadeInRight animated" data-wow-duration="500ms">
-						<ul class="text-center">
-							<li><a href="javascript:;" data-filter="all" class="active filter">All</a></li>
-							<li><a href="javascript:;" data-filter=".Members" class="filter">MEMBERS</a></li>
-							<li><a href="javascript:;" data-filter=".Departments" class="filter">DEPARTMENTS</a></li>
-							<li><a href="javascript:;" data-filter=".Donations" class="filter">DONATIONS</a></li>
-							<li><a href="javascript:;" data-filter=".Events" class="filter">EVENTS</a></li>
-							<li><a href="javascript:;" data-filter=".Event-Members" class="filter">EVENT MEMBERS</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="project-wrapper">
-
-				<figure class="mix work-item Members well">
-					<%# <img src="img/works/tbl1.jpg" alt="">%>
-          <%# ___________________________________________________ %>
-          <%# Table by divyaksh begins here%>
-          <table class="table table-bordered">
-            <thead>
-              <th>Member Name</th>
-              <th>Department</th>
-            </thead>
-            <tbody>
-          <% for (m in members) { %>
-            <tr>
-              <td>
-                <%= members[m].mname %>
-              </td>
-              <td>
-                <%= members[m].dname %>
-              </td>
-            </tr>
-          <% } %>
-        </tbody>
-        </table>
-
-        <%# Table by divyaksh ends here%>
-        <%# ___________________________________________________ %>
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl1.jpg"><i class="fa fa-eye fa-lg"></i></a>
-
-            <!--Entered by Divyaksh-->
-            <a class="fancybox" rel="works" href="/new_member">+</a>
-            <a class="fancybox" rel="works" href="/remove_member">-</a>
-						<h4>Member Info</h4>
-						<p>Members</p>
-					</figcaption>
-				</figure>
-
-				<figure class="mix work-item Departments well">
-					<%# <img src="img/works/tbl2.jpg" alt="">%>
-
-          <%# ___________________________________________________ %>
-          <%# Table by divyaksh begins here%>
-          <table class="table table-bordered">
-            <thead>
-              <th>Department</th>
-              <th>Manager Name</th>
-            </thead>
-            <tbody>
-          <% for (d in departments) { %>
-            <tr>
-              <td>
-                <%= departments[d].dname %>
-              </td>
-              <td>
-                <%= departments[d].mname %>
-              </td>
-            </tr>
-          <% } %>
-        </tbody>
-        </table>
-
-        <%# Table by divyaksh ends here%>
-        <%# ___________________________________________________ %>
-
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl2.jpg"><i class="fa fa-eye fa-lg"></i></a>
-            <a class="fancybox" rel="works" href="/assign-manager">Assign Manager</a>
-						<h4>Department Info</h4>
-						<p>Departments</p>
-					</figcaption>
-				</figure>
-
-				<figure class="mix work-item Donations well">
-					<%# <img src="img/works/tbl3.jpg" alt="">%>
-
-          <%# ___________________________________________________ %>
-          <%# Table by divyaksh begins here%>
-          <table class="table table-bordered">
-            <thead>
-              <th>Donor name</th>
-              <th>Type</th>
-            </thead>
-            <tbody>
-          <% for (d in donations) { %>
-            <tr>
-              <td>
-                <%= donations[d].donor_name %>
-              </td>
-              <td>
-                <%= donations[d].type %>
-              </td>
-            </tr>
-          <% } %>
-        </tbody>
-        </table>
-
-        <%# Table by divyaksh ends here%>
-        <%# ___________________________________________________ %>
-
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl3.jpg"><i class="fa fa-eye fa-lg"></i></a>
-						<a class="fancybox" rel="works" href="/add_donation">+</a>
-            
-						<h4>Donation Info</h4>
-						<p>Donations</p>
-					</figcaption>
-				</figure>
-
-				<figure class="mix work-item Events well">
-					<%# <img src="img/works/tbl5.jpg" alt="">%>
-
-          <%# ___________________________________________________ %>
-          <%# Table by divyaksh begins here%>
-          <table class="table table-bordered">
-            <thead>
-              <th>Event name</th>
-              <th>Location</th>
-            </thead>
-            <tbody>
-          <% for (e in events) { %>
-            <tr>
-              <td>
-                <%= events[e].ename %>
-              </td>
-              <td>
-                <%= events[e].location %>
-              </td>
-            </tr>
-          <% } %>
-        </tbody>
-        </table>
-
-        <%# Table by divyaksh ends here%>
-        <%# ___________________________________________________ %>
-
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl5.jpg"><i class="fa fa-eye fa-lg"></i></a>
-						<a class="fancybox" rel="works" href="/add_event">+</a>
-            <a class="fancybox" rel="works" href="/remove_event">-</a>
-						<h4>Events Info</h4>
-						<p>Events</p>
-					</figcaption>
-				</figure>
-
-				<figure class="mix work-item Event-Members well">
-					<%# <img src="img/works/tbl4.jpg" alt="">%>
-
-
-          <%# ___________________________________________________ %>
-          <%# Table by divyaksh begins here%>
-          <table class="table table-bordered">
-            <thead>
-              <th>Event name</th>
-              <th>Member name</th>
-            </thead>
-            <tbody>
-          <% for (em in event_members) { %>
-            <tr>
-              <td>
-                <%= event_members[em].ename %>
-              </td>
-              <td>
-                <%= event_members[em].mname %>
-              </td>
-            </tr>
-          <% } %>
-        </tbody>
-        </table>
-
-        <%# Table by divyaksh ends here%>
-        <%# ___________________________________________________ %>
-
-
-					<figcaption class="overlay">
-						<a class="fancybox" rel="works" title="Write Your Image Caption Here" href="img/works/tbl4.jpg"><i class="fa fa-eye fa-lg"></i></a>
-						<h4>EventMembers Info</h4>
-						<p>Event-Members</p>
-					</figcaption>
-				</figure>
-
-
-
-			</div>
-
-
-		</section>
-
-        <!--
-        End Our Works
-        ==================================== -->
-
-        <!--
-        Meet Our Team
-        ==================================== -->
-
-		<!--<section id="team" class="team">
-			<div class="container">
-				<div class="row">
-
-					<div class="sec-title text-center wow fadeInUp animated" data-wow-duration="700ms">
-						<h2>Meet Our Team</h2>
-
-					</div>
-
-					<div class="sec-sub-title text-center wow fadeInRight animated" data-wow-duration="500ms">
-						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore</p>
-					</div>
-
-
-					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-						<div class="member-thumb">
-							<img src="img/team/member-1.png" alt="Team Member" class="img-responsive">
-							<figcaption class="overlay">
-								<h5>voluptatem quia voluptas </h5>
-								<p>sit aspernatur aut odit aut fugit,</p>
-								<ul class="social-links text-center">
-									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-								</ul>
-							</figcaption>
-						</div>
-						<h4>John Filmr Doe</h4>
-						<span>Managing Director</span>
-					</figure>
-
-					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-						<div class="member-thumb">
-							<img src="img/team/member-2.png" alt="Team Member" class="img-responsive">
-							<figcaption class="overlay">
-								<h5>voluptatem quia voluptas </h5>
-								<p>sit aspernatur aut odit aut fugit,</p>
-								<ul class="social-links text-center">
-									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-								</ul>
-							</figcaption>
-						</div>
-						<h4>Martin Matrone</h4>
-						<span>Lead Developer</span>
-					</figure>
-
-					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-						<div class="member-thumb">
-							<img src="img/team/member-3.png" alt="Team Member" class="img-responsive">
-							<figcaption class="overlay">
-								<h5>voluptatem quia voluptas </h5>
-								<p>sit aspernatur aut odit aut fugit,</p>
-								<ul class="social-links text-center">
-									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-								</ul>
-							</figcaption>
-						</div>
-						<h4>Steve Flaulkin</h4>
-						<span>Sr. UI Designer</span>
-					</figure>
-
-					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-						<div class="member-thumb">
-							<img src="img/team/member-1.png" alt="Team Member" class="img-responsive">
-							<figcaption class="overlay">
-								<h5>voluptatem quia voluptas </h5>
-								<p>sit aspernatur aut odit aut fugit,</p>
-								<ul class="social-links text-center">
-									<li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-									<li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-								</ul>
-							</figcaption>
-						</div>
-						<h4>John Filmr Doe</h4>
-						<span>Managing Director</span>
-					</figure>
-
-
-				</div>
-			</div>
-		</section>
-        <!--
-        End Meet Our Team
-        ==================================== -->
-
-		<!--
-        Some fun facts
-        ==================================== -->
-
-		<section id="team" class="facts">
-			<div class="parallax-overlay">
-				<div class="container">
-					<div class="row number-counters">
-
-						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-							<h2>Quick Stats</h2>
-
-						</div>
-
-						<!-- first count item -->
-						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-							<div class="counters-item">
-								<i class="fa fa-calendar-o fa-3x"></i>
-								<strong>11th April, 2016</strong>
-								<!-- Set Your Number here. i,e. data-to="56" -->
-								<p>Founded on</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-							<div class="counters-item">
-								<i class="fa fa-users fa-3x"></i>
-								<strong data-to="120">0</strong>
-								<!-- Set Your Number here. i,e. data-to="56" -->
-								<p>Total No. of Members</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-							<div class="counters-item">
-								<i class="fa fa-flag fa-3x"></i>
-								<strong data-to="360">0</strong>
-								<!-- Set Your Number here. i,e. data-to="56" -->
-								<p>Events Organised</p>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-							<div class="counters-item">
-								<i class="fa fa-smile-o fa-3x"></i>
-								<strong data-to="6454">0</strong>
-								<!-- Set Your Number here. i,e. data-to="56" -->
-								<p>Total Donations</p>
-							</div>
-						</div>
-						<!-- end first count item -->
-
-
-
-					</div>
-					<div class="col-md-12 col-sm-12 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-						<div class="sec-title text-center mb50 wow rubberBand animated" data-wow-duration="1000ms">
-							<h2>Graphs</h2>
-						</div>
-							<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-						<div class="member-thumb">
-							<img src="img/team/graph1.png" alt="Team Member" class="img-responsive">
-							<figcaption class="overlay">
-								<h5>Graph1 </h5>
-								<!--<p>sit aspernatur aut odit aut fugit,</p>-->
-
-							</figcaption>
-						</div>
-						<h4>Members vs Time</h4>
-						<!--<span>Managing Director</span>-->
-					</figure>
-
-					<figure class="team-member col-md-3 col-sm-6 col-xs-12 text-center wow fadeInUp animated" data-wow-duration="500ms">
-						<div class="member-thumb">
-							<img src="img/team/graph2.png" alt="Team Member" class="img-responsive">
-							<figcaption class="overlay">
-								<h5>Graph2 </h5>
-								<!--<p>sit aspernatur aut odit aut fugit,</p>-->
-
-							</figcaption>
-						</div>
-						<h4>Donations vs Time</h4>
-						<!--<span>Managing Director</span>-->
-					</figure>
-				</div>
-			</div>
-		</section>
-
-        <!--
-        End Some fun facts
-        ==================================== -->
-
-
-		<!--
-        Contact Us
-        ==================================== -->
-
-		<section id="contact" class="contact">
-			<div class="container">
-				<div class="row mb50">
-
-					<div class="sec-title text-center mb50 wow fadeInDown animated" data-wow-duration="500ms">
-						<h2>About</h2>
-
-					</div>
-
-					<div class="sec-sub-title text-center wow rubberBand animated" data-wow-duration="1000ms">
-						<p>A nonprofit organisation's goals and objectives flow from its stated mission. The mission statement, created during the strategic planning process, describes the organization's overall purpose and is usually concise.
-One of the biggest operational challenges faced by nonprofit organizations today is information management. No matter what the organization does, it can’t operate without collecting, storing, sharing, and archiving information.In order to deal with more donors (at the top) and more beneficiaries (at the bottom), NGOs increasingly need systems to manage the creation, accessing and deployment information
- In our project we aim at helping out one such organisation, “Ekk Pahel” by creating a Database management web application to collect and manage its records.
-Our project caters to real world, operational organisation.This necessitates the need to involve the NGO in the decision-making process to ensure their satisfaction.
-Our goal is to provide a prototype for an end to end web application to manage its donations and finance, record its past and future events and achievements, keep track of its members, their roles and contributions, calendar of events and schedules.  This could help in a smoother and seamless flow in the working process of the NGO, and could help take out the paper and sheet management. </p>
-					</div>
-
-					<!-- contact address -->
-					<div class="col-lg-6 col-md-6 col-sm-9 col-xs-12 wow fadeInLeft animated" data-wow-duration="500ms">
-						<div class="contact-address" >
-							<h3 >FRONT END DETAILS:</h3>
-							<p>i. Type of Application:		Web Application</p>
-							<p>ii. Programming Language:	Python / JavaScript</p>
-							<p>iii. Web Technologies used:	AngularJS, Node.JS, HTML5, CSS3, Bootstrap</p>
-						</div>
-					</div>
-					<!-- end contact address -->
-
-					<!-- contact form -->
-					<!--<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 wow fadeInDown animated" data-wow-duration="500ms" data-wow-delay="300ms">
-						<div class="contact-form">
-							<h3>Say hello!</h3>
-							<form action="#" id="contact-form">
-								<div class="input-group name-email">
-									<div class="input-field">
-										<input type="text" name="name" id="name" placeholder="Name" class="form-control">
-									</div>
-									<div class="input-field">
-										<input type="email" name="email" id="email" placeholder="Email" class="form-control">
-									</div>
-								</div>
-								<div class="input-group">
-									<textarea name="message" id="message" placeholder="Message" class="form-control"></textarea>
-								</div>
-								<div class="input-group">
-									<input type="submit" id="form-submit" class="pull-right" value="Send message">
-								</div>
-							</form>
-						</div>
-					</div>-->
-					<!-- end contact form -->
-
-					<!-- footer social links -->
-					<!--<div class="col-lg-1 col-md-1 col-sm-1 col-xs-12 wow fadeInRight animated" data-wow-duration="500ms" data-wow-delay="600ms">
-						<ul class="footer-social">
-							<li><a href="https://www.behance.net/Themefisher"><i class="fa fa-behance fa-2x"></i></a></li>
-							<li><a href="https://www.twitter.com/Themefisher"><i class="fa fa-twitter fa-2x"></i></a></li>
-							<li><a href="https://dribbble.com/themefisher"><i class="fa fa-dribbble fa-2x"></i></a></li>
-							<li><a href="https://www.facebook.com/Themefisher"><i class="fa fa-facebook fa-2x"></i></a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-
-			<!-- Google map
-			<div id="map_canvas" class="wow bounceInDown animated" data-wow-duration="500ms"></div>
-			End Google map -->
-
-		</section>
-
-        <!--
-        End Contact Us
-        ==================================== -->
-
-
-		<footer id="footer" class="footer">
-			<div class="container">
-				<div class="row">
-
-					<!--<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms">
-						<div class="footer-single">
-							<img src="img/footer-logo1.png" alt="">
-							<p>eusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="300ms">
-						<div class="footer-single">
-							<h6>copyright </h6>
-							<form action="#" class="subscribe">
-								<input type="text" name="subscribe" id="subscribe">
-								<input type="submit" value="&#8594;" id="subs">
-							</form>
-							<p>eusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="600ms">
-						<div class="footer-single">
-							<h6>Explore</h6>
-							<ul>
-								<li><a href="#">Inside Us</a></li>
-								<li><a href="#">Flickr</a></li>
-								<li><a href="#">Google</a></li>
-								<li><a href="#">Forum</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp animated" data-wow-duration="500ms" data-wow-delay="900ms">
-						<div class="footer-single">
-							<h6>Support</h6>
-							<ul>
-								<li><a href="#">Contact Us</a></li>
-								<li><a href="#">Market Blog</a></li>
-								<li><a href="#">Help Center</a></li>
-								<li><a href="#">Pressroom</a></li>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<p class="copyright text-center">
-							Copyright © 2015 <a href="http://themefisher.com/">Themefisher</a>. All rights reserved. Designed & developed by <a href="http://themefisher.com/">Themefisher</a>
-						</p>
-					</div>
-				</div>
-			</div>-->
-		</footer>
-
-		<a href="javascript:void(0);" id="back-top"><i class="fa fa-angle-up fa-3x"></i></a>
-
-		<!-- Essential jQuery Plugins
-		================================================== -->
-		<!-- Main jQuery -->
-        <script src="js/jquery-1.11.1.min.js"></script>
-		<!-- Single Page Nav -->
-        <script src="js/jquery.singlePageNav.min.js"></script>
-		<!-- Twitter Bootstrap -->
-        <script src="js/bootstrap.min.js"></script>
-		<!-- jquery.fancybox.pack -->
-        <script src="js/jquery.fancybox.pack.js"></script>
-		<!-- jquery.mixitup.min -->
-        <script src="js/jquery.mixitup.min.js"></script>
-		<!-- jquery.parallax -->
-        <script src="js/jquery.parallax-1.1.3.js"></script>
-		<!-- jquery.countTo -->
-        <script src="js/jquery-countTo.js"></script>
-		<!-- jquery.appear -->
-        <script src="js/jquery.appear.js"></script>
-		<!-- Contact form validation -->
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.32/jquery.form.js"></script>
-		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.11.1/jquery.validate.min.js"></script>
-		<!-- Google Map -->
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-		<!-- jquery easing -->
-        <script src="js/jquery.easing.min.js"></script>
-		<!-- jquery easing -->
-        <script src="js/wow.min.js"></script>
-		<script>
-			var wow = new WOW ({
-				boxClass:     'wow',      // animated element css class (default is wow)
-				animateClass: 'animated', // animation css class (default is animated)
-				offset:       120,          // distance to the element when triggering the animation (default is 0)
-				mobile:       false,       // trigger animations on mobile devices (default is true)
-				live:         true        // act on asynchronously loaded content (default is true)
-			  }
-			);
-			wow.init();
-		</script>
-		<!-- Custom Functions -->
-        <script src="js/custom.js"></script>
-
-		<script type="text/javascript">
-			$(function(){
-				/* ========================================================================= */
-				/*	Contact Form
-				/* ========================================================================= */
-
-				$('#contact-form').validate({
-					rules: {
-						name: {
-							required: true,
-							minlength: 2
-						},
-						email: {
-							required: true,
-							email: true
-						},
-						message: {
-							required: true
-						}
-					},
-					messages: {
-						name: {
-							required: "come on, you have a name don't you?",
-							minlength: "your name must consist of at least 2 characters"
-						},
-						email: {
-							required: "no email, no message"
-						},
-						message: {
-							required: "um...yea, you have to write something to send this form.",
-							minlength: "thats all? really?"
-						}
-					},
-					submitHandler: function(form) {
-						$(form).ajaxSubmit({
-							type:"POST",
-							data: $(form).serialize(),
-							url:"process.php",
-							success: function() {
-								$('#contact-form :input').attr('disabled', 'disabled');
-								$('#contact-form').fadeTo( "slow", 0.15, function() {
-									$(this).find(':input').attr('disabled', 'disabled');
-									$(this).find('label').css('cursor','default');
-									$('#success').fadeIn();
-								});
-							},
-							error: function() {
-								$('#contact-form').fadeTo( "slow", 0.15, function() {
-									$('#error').fadeIn();
-								});
-							}
-						});
-					}
-				});
-			});
-		</script>
-    </body>
-</html>
+var express = require('express');
+var mysql = require('mysql');
+var promise_mysql = require('promise-mysql');
+var bodyParser = require('body-parser');
+var Promise = require('bluebird');
+
+const {check, validationResult} = require('express-validator/check');
+const {matchedData, sanitize} = require('express-validator/filter');
+
+var app = express();
+
+// Handling mysql using Promise
+var connection = promise_mysql.createPool({
+  host: "localhost",
+  user: "divyaksh",
+  password: "password",
+  database: "ekkPahel"
+});
+
+// Handling the mysql Database
+var con = mysql.createConnection ( {
+  host: "localhost",
+  user: "divyaksh",
+  password: "password",
+  database: "ekkPahel"
+});
+
+con.connect( function (err) {
+  if (err) throw err;
+  console.log("Mysql Database Connected!")
+
+  // con.query('call insertNewMember (' + new_member_data + ')', function(err, result, fields) {
+  //   if (err) throw err;
+  //   if (result[0].res === 0) {
+  //     console.log("Some result error...");
+  //   }
+  //   else {
+  //     // Implementation of the callback
+  //     // Show a success message
+  //
+  //   }
+  // });
+});
+
+// tell node where to look for site resources
+app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/font'));
+
+// tell node and configure express to read post data
+app.use(bodyParser.urlencoded({encoded: true}));
+
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res) {
+
+  var flag = 1;
+  var members, departments, donations, events, event_members;
+  // Query to get latest added members
+  connection.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;').then((rows) => {
+  // connection.query('SELECT mname, ssn FROM Members ORDER BY ssn DESC LIMIT 5;').then((rows) => {
+
+    // Members preview data
+    console.log(JSON.stringify(rows));
+    members = rows;
+    flag += 1;
+
+    // Query to get latest added departments
+    return connection.query('SELECT d.dname, m.mname FROM Department d, Members m WHERE d.mgrssn=m.ssn ORDER BY d.dno ASC LIMIT 5;')
+  }).then((rows) => {
+
+    // Departments Preview data
+    console.log(JSON.stringify(rows));
+    departments = rows;
+    flag += 1;
+
+    // Query to get latest added donations
+    return connection.query('SELECT donor_name, type FROM Donations ORDER BY receipt_no DESC LIMIT 5;')
+  }).then((rows) => {
+
+    // Donations Preview data
+    console.log(JSON.stringify(rows));
+    donations = rows;
+    flag += 1;
+
+    // Query to get latest added Events
+    return connection.query('SELECT ename, location FROM Events ORDER BY eid DESC LIMIT 5;')
+
+  }).then((rows) => {
+
+    // Events Preview data
+    console.log(JSON.stringify(rows));
+    events = rows;
+    flag += 1;
+
+    // Query to get the event members
+    return connection.query('SELECT ename, mname FROM Events e, Members m, Event_Members em where e.eid=em.eid and m.ssn=em.memssn LIMIT 5;')
+
+    // res.render('index', {departments: departments, members: members, donations: donations, events: events});
+
+  }).then((rows) => {
+
+    // Event Members Preview data
+    console.log(JSON.stringify(rows));
+    event_members = rows;
+
+    res.render('index', {departments: departments, members: members, donations: donations, events: events, event_members: event_members});
+  });
+});
+
+app.get('/new_member', (req, res) => {
+  res.render('new_member',{data: null, errors: null});
+  res.send()
+});
+
+app.get('/remove_member', (req, res) => {
+  res.render('remove_member');
+});
+
+app.post('/new_member_data',[
+  check('member_name').isEmpty().isAlpha().trim(),
+  check('joiningDate').isEmpty(),
+  check('age').isEmpty().isInt().trim(),
+  check('PhoneNo').isEmpty().isMobilePhone('any').trim(),
+  check('EmailId').isEmpty().isEmail().trim(),
+  check('position').isEmpty().isAlpha().trim(),
+  check('dname').isEmpty().isAlpha().trim()
+] , (req, res) => {
+
+  var new_member_data = "'" + req.body.member_name + "'"
+  + ',' + "'" + req.body.joiningDate + "'"
+  + ',' + "'" + req.body.age + "'"
+  + ',' + "'" + req.body.PhoneNo + "'"
+  + ',' + "'" + req.body.EmailId + "'"
+  + ',' + "'" + req.body.position + "'"
+  + ',' + "'" + req.body.dname + "'" ;
+  console.log(req.body);
+
+  con.query('call insertNewMember (' + new_member_data + ');', function(err, result, fields) {
+    if (err) {
+      // Testing to send and handle errors in inserting the data
+      console.log('SQL Error');
+      // res.render('new_member', {data: req.body, errors: });
+    }
+    else {
+      res.redirect('/');
+    }
+  });
+});
+
+app.get('/add_donation', (req, res) => {
+  res.render('add_donation',{data: null, errors: null});
+});
+app.post('/add_donation_data',[
+  check('donor_name').isEmpty().isAlpha().trim(),
+  check('amount').isEmpty(),
+  check('transaction_date').isEmpty().isInt().trim(),
+  check('receipt_no').isEmpty().isMobilePhone('any').trim(),
+  check('type').isEmpty().isEmail().trim(),
+  
+] , (req, res) => {
+
+  var new_member_data = "'" + req.body.donor_name + "'"
+  + ',' + "'" + req.body.amount + "'"
+  + ',' + "'" + req.body.transaction_date + "'"
+  + ',' + "'" + req.body.receipt_no + "'"
+  + ',' + "'" + req.body.type + "'"
+  ;
+  console.log(req.body);
+
+  con.query('call insertNewDonation (' + add_donation_data + ');', function(err, result, fields) {
+    if (err) {
+      // Testing to send and handle errors in inserting the data
+      console.log('SQL Error');
+      // res.render('new_member', {data: req.body, errors: });
+    }
+    else {
+      res.redirect('/');
+    }
+  });
+});
+
+app.get('/assign-manager', (req, res) => {
+
+  con.query('SELECT d.dno, m.mname, m.ssn FROM Department d, Members m WHERE mgrssn=ssn;', (err, result, field) => {
+    if (err) throw err;
+    else {
+      // console.log(JSON.stringify(result));
+      var managed_departments = result;
+      con.query('SELECT * FROM Department;', (err, result, field) => {
+        if (err) throw err;
+          else {
+          var departments = result;
+          res.render('assign_manager', {departments: departments, managers: managed_departments});
+          console.log("Department:");
+          console.log(JSON.stringify(departments));
+          console.log("Managers:");
+          console.log(JSON.stringify(managed_departments));
+        }
+      });
+    }
+  });
+});
+
+
+app.get('/add_event', (req, res) => {
+  res.render('add_event',{data: null, errors: null});
+});
+
+app.get('/remove_event', (req, res) => {
+  res.render('remove_event');
+});
+
+app.post('/add_event_data',[
+  check('event_id').isEmpty().isAlpha().trim(),
+  check('location').isEmpty(),
+  check('budget').isEmpty().isInt().trim(),
+  check('event_name').isEmpty().isMobilePhone('any').trim(),
+  check('supssn').isEmpty().isEmail().trim(),
+  check('date_time').isEmpty().isAlpha().trim(),
+  check('receipt_no').isEmpty().isAlpha().trim()
+] , (req, res) => {
+
+  var add_event_data = "'" + req.body.event_id + "'"
+  + ',' + "'" + req.body.location + "'"
+  + ',' + "'" + req.body.budget + "'"
+  + ',' + "'" + req.body.event_name + "'"
+  + ',' + "'" + req.body.supssn + "'"
+  + ',' + "'" + req.body.date_time + "'"
+  + ',' + "'" + req.body.receipt_no + "'" ;
+  console.log(req.body);
+
+  con.query('call insertNewEvent (' + add_event_data + ');', function(err, result, fields) {
+    if (err) {
+      // Testing to send and handle errors in inserting the data
+      console.log('SQL Error');
+      // res.render('add_event', {data: req.body, errors: });
+    }
+    else {
+      res.redirect('/');
+    }
+  });
+});
+
+
+app.post('')
+
+app.listen(8080);
+console.log("Server started on url: localhost:8080");
