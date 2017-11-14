@@ -3,6 +3,7 @@ var mysql = require('mysql');
 var promise_mysql = require('promise-mysql');
 var bodyParser = require('body-parser');
 var Promise = require('bluebird');
+var mysql2 = require('mysql2');
 
 const {check, validationResult} = require('express-validator/check');
 const {matchedData, sanitize} = require('express-validator/filter');
@@ -42,6 +43,15 @@ con.connect( function (err) {
   // });
 });
 
+
+// Connection to use mysql2 library (improved over mysql)
+var con2 = mysql2.createConnection({
+  host: "localhost",
+  user: "divyaksh",
+  password: "password",
+  database: "ekkPahel"
+});
+
 // tell node where to look for site resources
 app.use(express.static(__dirname + '/public'));
 // app.use(express.static(__dirname + '/font'));
@@ -57,7 +67,7 @@ app.get('/', function(req, res) {
   var members, departments, donations, events, event_members;
   // Query to get latest added members
   connection.query('SELECT m.mname, d.dname FROM Members m, Department d WHERE d.dno=m.dno ORDER BY m.ssn DESC LIMIT 5;').then((rows) => {
-  // connection.query('SELECT mname, ssn FROM Members ORDER BY ssn DESC LIMIT 5;').then((rows) => {
+    // connection.query('SELECT mname, ssn FROM Members ORDER BY ssn DESC LIMIT 5;').then((rows) => {
 
     // Members preview data
     console.log(JSON.stringify(rows));
@@ -116,48 +126,67 @@ app.get('/remove_member', (req, res) => {
   res.render('remove_member');
 });
 
+app.post('/remove_member_data', (req, res) => {
+
+  con2.execute('DELETE FROM Members WHERE mname = ? AND email = ?',
+                [req.body.member_name, req.body.EmailId], (err, results, fields) => {
+    console.log('Data deleted');
+    res.redirect('/');
+  })
+});
+
 app.post('/new_member_data',[
-  check('member_name').isEmpty().isAlpha().trim(),
-  check('joiningDate').isEmpty(),
-  check('age').isEmpty().isInt().trim(),
-  check('PhoneNo').isEmpty().isMobilePhone('any').trim(),
-  check('EmailId').isEmpty().isEmail().trim(),
-  check('position').isEmpty().isAlpha().trim(),
-  check('dname').isEmpty().isAlpha().trim()
+  check('member_name').not().isEmpty().not().isNumeric().trim(),
+  check('joiningDate').not().isEmpty(),
+  check('PhoneNo').not().isEmpty().isMobilePhone('any').trim(),
+  check('EmailId').not().isEmpty().isEmail().trim(),
+  check('dname').not().isEmpty().not().isNumeric().trim(),
+  check('dob').not().isEmpty(),
+  check('fatherName').not().isEmpty().not().isNumeric().trim(),
+  check('corrAddr').not().isEmpty().not().isNumeric().trim(),
+  check('permAddr').not().isEmpty().not().isNumeric().trim(),
+  check('gender').not().isEmpty().not().isNumeric().trim(),
+  check('collegeName').not().isEmpty().not().isNumeric().trim()
 ] , (req, res) => {
 
-  var new_member_data = "'" + req.body.member_name + "'"
-  + ',' + "'" + req.body.joiningDate + "'"
-  + ',' + "'" + req.body.age + "'"
-  + ',' + "'" + req.body.PhoneNo + "'"
-  + ',' + "'" + req.body.EmailId + "'"
-  + ',' + "'" + req.body.position + "'"
-  + ',' + "'" + req.body.dname + "'" ;
-  console.log(req.body);
+  var errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    console.log('_______________________________________________________________________');
+    console.log(errors.mapped());
+    res.render('new_member', {errors: errors.mapped()});
+  }
+  else{
 
-  con.query('call insertNewMember (' + new_member_data + ');', function(err, result, fields) {
-    if (err) {
-      // Testing to send and handle errors in inserting the data
-      console.log('SQL Error');
-      // res.render('new_member', {data: req.body, errors: });
-    }
-    else {
-      res.redirect('/');
-    }
-  });
+    var new_member_data = "'" + req.body.member_name + "'"
+    + ',' + "'" + req.body.joiningDate + "'"
+    + ',' + "'" + req.body.PhoneNo + "'"
+    + ',' + "'" + req.body.EmailId + "'"
+    + ',' + "'" + req.body.dname + "'"
+    + ',' + "'" + req.body.dob + "'"
+    + ',' + "'" + req.body.fatherName + "'"
+    + ',' + "'" + req.body.corrAddr + "'"
+    + ',' + "'" + req.body.permAddr + "'"
+    + ',' + "'" + req.body.gender + "'"
+    + ',' + "'" + req.body.collegeName + "'"
+    console.log(req.body);
+
+    con.query('call insertNewMember (' + new_member_data + ');', function(err, result, fields) {
+      if (err) {
+        // Testing to send and handle errors in inserting the data
+        console.log('SQL Error');
+        // res.render('new_member', {data: req.body, errors: });
+      }
+      else {
+        res.redirect('/');
+      }
+    });
+  }
 });
 
 app.get('/add_donation', (req, res) => {
   res.render('add_donation',{data: null, errors: null});
 });
-app.post('/add_donation_data',[
-  check('donor_name').isEmpty().isAlpha().trim(),
-  check('amount').isEmpty(),
-  check('transaction_date').isEmpty().isInt().trim(),
-  check('receipt_no').isEmpty().isMobilePhone('any').trim(),
-  check('type').isEmpty().isEmail().trim(),
-  
-] , (req, res) => {
+app.post('/add_donation_data', (req, res) => {
 
   var new_member_data = "'" + req.body.donor_name + "'"
   + ',' + "'" + req.body.amount + "'"
@@ -188,7 +217,7 @@ app.get('/assign-manager', (req, res) => {
       var managed_departments = result;
       con.query('SELECT * FROM Department;', (err, result, field) => {
         if (err) throw err;
-          else {
+        else {
           var departments = result;
           res.render('assign_manager', {departments: departments, managers: managed_departments});
           console.log("Department:");
@@ -210,15 +239,7 @@ app.get('/remove_event', (req, res) => {
   res.render('remove_event');
 });
 
-app.post('/add_event_data',[
-  check('event_id').isEmpty().isAlpha().trim(),
-  check('location').isEmpty(),
-  check('budget').isEmpty().isInt().trim(),
-  check('event_name').isEmpty().isMobilePhone('any').trim(),
-  check('supssn').isEmpty().isEmail().trim(),
-  check('date_time').isEmpty().isAlpha().trim(),
-  check('receipt_no').isEmpty().isAlpha().trim()
-] , (req, res) => {
+app.post('/add_event_data', (req, res) => {
 
   var add_event_data = "'" + req.body.event_id + "'"
   + ',' + "'" + req.body.location + "'"

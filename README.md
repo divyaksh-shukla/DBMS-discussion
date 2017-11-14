@@ -10,6 +10,18 @@ User Interface made using **brandi**
   - adding _gender_
   - adding field for _college / university_
   - **These changes are to be put in the database as well**
+- **input fields for new_member**
+  - mname
+  - join date
+  - phone no
+  - email id
+  - dname
+  - date of birth
+  - father's name
+  - corresponding address
+  - permanent address
+  - gender
+  - college
 
 ### Mysql Stored Procedure
 
@@ -18,13 +30,13 @@ delimiter //
 
 DROP PROCEDURE IF EXISTS insertNewMember//
 CREATE PROCEDURE insertNewMember
-(IN name varchar(20), IN join_date date, IN age int, IN phone_no varchar(10), IN email_id varchar(20), IN position varchar(20), IN dname varchar(20), IN dateOfBirth date, IN fatherName varchar(50), IN correspondingAddress varchar(50), IN permanentAddress varchar(50), IN gender varchar(6), IN college varchar(50))
+(IN name varchar(20), IN join_date date, IN phone_no varchar(10), IN email_id varchar(20), IN dname varchar(20), IN dateOfBirth date, IN fatherName varchar(50), IN correspondingAddress varchar(50), IN permanentAddress varchar(50), IN gender varchar(6), IN college varchar(50))
 BEGIN
-  IF NOT EXISTS (Select * FROM Department d WHERE d.dname=dname) THEN
+  IF NOT EXISTS (Select * FROM Department d WHERE d.dname LIKE dname) THEN
     INSERT INTO Department(dname) VALUES(dname);
   END IF;
-  IF NOT EXISTS (Select * FROM Members WHERE email_id=email and phone=phone_no) THEN
-    INSERT INTO Members (mname, joining_date, age, phone, email, position, dno, date_of_birth, father_name, corresponding_address, permanent_address, gender, college) VALUES(name, join_date, age, phone_no, email_id, position, (SELECT d.dno FROM Department d WHERE d.dname=dname), dateOfBirth, fatherName, correspondingAddress, permanentAddress, gender, college);
+  IF NOT EXISTS (Select * FROM Members WHERE email_id LIKE email and phone LIKE phone_no) THEN
+    INSERT INTO Members (mname, joining_date, phone, email, dno, date_of_birth, father_name, corresponding_address, permanent_address, gender, college) VALUES(name, join_date, phone_no, email_id, (SELECT d.dno FROM Department d WHERE d.dname LIKE dname), dateOfBirth, fatherName, correspondingAddress, permanentAddress, gender, college);
   END IF;
 END//
 
