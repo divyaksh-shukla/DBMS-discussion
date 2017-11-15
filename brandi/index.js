@@ -119,7 +119,7 @@ app.get('/', function(req, res) {
 
 app.get('/new_member', (req, res) => {
   res.render('new_member',{data: null, errors: null});
-  res.send()
+  // res.send()
 });
 
 app.get('/remove_member', (req, res) => {
