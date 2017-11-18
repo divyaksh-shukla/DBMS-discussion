@@ -8,7 +8,7 @@ var mysql2 = require('mysql2');
 const {check, validationResult} = require('express-validator/check');
 const {matchedData, sanitize} = require('express-validator/filter');
 
-var app = express();
+var router = express.Router();
 
 // Handling mysql using Promise
 var connection = promise_mysql.createPool({
@@ -40,16 +40,16 @@ var con2 = mysql2.createConnection({
   database: "ekkPahel"
 });
 
-// tell node where to look for site resources
-app.use(express.static(__dirname + '/public'));
-// app.use(express.static(__dirname + '/font'));
+// // tell node where to look for site resources
+// router.use(express.static(__dirname + '/public'));
+// // router.use(express.static(__dirname + '/font'));
+//
+// // tell node and configure express to read post data
+// router.use(bodyParser.urlencoded({encoded: true}));
+//
+// router.set('view engine', 'ejs');
 
-// tell node and configure express to read post data
-app.use(bodyParser.urlencoded({encoded: true}));
-
-app.set('view engine', 'ejs');
-
-app.get('/assign-manager', (req, res) => {
+router.get('/assign-manager', (req, res) => {
 
   /*con.query('SELECT d.dno, m.mname, m.ssn FROM Department d, Members m WHERE mgrssn=ssn;', (err, result, field) => {
     if (err) throw err;
@@ -69,10 +69,10 @@ app.get('/assign-manager', (req, res) => {
       });
     }
   });*/
-  
+
   var [err, managed_departments] = con2.query('SELECT d.dno, m.mname, m.ssn FROM Department d, Members m WHERE mgrssn=ssn;');
   if (err) throw err;
-  var [err, departments = con2.query('SELECT * FROM Department;');
+  var [err, departments] = con2.query('SELECT * FROM Department;');
   if (err) throw err;
   res.render('assign_manager', {departments: departments, managers: managed_departments});
   console.log("Department:");
@@ -80,3 +80,5 @@ app.get('/assign-manager', (req, res) => {
   console.log("Managers:");
   console.log(JSON.stringify(managed_departments));
 });
+
+module.exports = router;

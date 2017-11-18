@@ -8,7 +8,7 @@ var mysql2 = require('mysql2');
 const {check, validationResult} = require('express-validator/check');
 const {matchedData, sanitize} = require('express-validator/filter');
 
-var app = express();
+var router = express.Router();
 
 // Handling mysql using Promise
 var connection = promise_mysql.createPool({
@@ -40,21 +40,21 @@ var con2 = mysql2.createConnection({
   database: "ekkPahel"
 });
 
-// tell node where to look for site resources
-app.use(express.static(__dirname + '/public'));
-// app.use(express.static(__dirname + '/font'));
+// // tell node where to look for site resources
+// router.use(express.static(__dirname + '/public'));
+// // router.use(express.static(__dirname + '/font'));
+//
+// // tell node and configure express to read post data
+// router.use(bodyParser.urlencoded({encoded: true}));
+//
+// router.set('view engine', 'ejs');
 
-// tell node and configure express to read post data
-app.use(bodyParser.urlencoded({encoded: true}));
+router.get('/new', (req, res) => {
 
-app.set('view engine', 'ejs');
-
-app.get('/new', (req, res) => {
-
-	res.render('new_member', {data: null, errors: null});
+	res.render('member/add', {data: null, errors: null});
 });
 
-app.post('/data',[
+router.post('/data',[
   check('member_name').not().isEmpty().not().isNumeric().trim(),
   check('joiningDate').not().isEmpty(),
   check('PhoneNo').not().isEmpty().isMobilePhone('any').trim(),
@@ -72,7 +72,7 @@ app.post('/data',[
   if(!errors.isEmpty()) {
     console.log('_______________________________________________________________________');
     console.log(errors.mapped());
-    res.render('new_member', {errors: errors.mapped()});
+    res.render('member/add', {errors: errors.mapped()});
   }
   else{
 
@@ -102,11 +102,11 @@ app.post('/data',[
   }
 });
 
-app.get('/remove', (req, res) => {
-  res.render('remove_member');
+router.get('/remove', (req, res) => {
+  res.render('member/remove');
 });
 
-app.delete('/data', (req, res) => {
+router.delete('/remove', (req, res) => {
 
   con2.execute('DELETE FROM Members WHERE mname = ? AND email = ?',
                 [req.body.member_name, req.body.EmailId], (err, results, fields) => {
@@ -115,4 +115,4 @@ app.delete('/data', (req, res) => {
   })
 });
 
-
+module.exports = router;
